@@ -15,7 +15,7 @@ module Resque
 
       def initialize(*args)
         super
-        @backends = self.class.classes.map {|klass| klass.new(*args)}
+        @backends = (self.class.classes || []).map {|klass| klass.new(*args)}
       end
 
       def save
